@@ -1,8 +1,15 @@
 import { useInput } from '../../hooks/use-input';
+import { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { firebaseAuth } from '../../firebase.js';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './Register.module.css';
 
 export const Register = () => {
+	const [error, setError] = useState('');
+	const navigate = useNavigate();
+
 	const isNotEmpty = (value: string) =>
 		value.trim() !== '' && value.length >= 6;
 	const isEmail = (value: string) => value.includes('@');
@@ -46,13 +53,32 @@ export const Register = () => {
 		formIsValid = true;
 	}
 
-	const submitHandler = (e: React.FormEvent) => {
+	const submitHandler = async (e: React.FormEvent): Promise<void> => {
 		e.preventDefault();
 		if (!formIsValid) {
 			return;
 		}
-		console.log('submited');
-		console.log(passwordValue, repeatPasswordValue, emailValue);
+		
+		try {
+			await createUserWithEmailAndPassword(
+				firebaseAuth,
+				emailValue,
+				passwordValue
+			);
+			navigate('/')
+		} catch ({ code, message }) {
+			if (code === 'auth/email-already-in-use') {
+				console.log(message);
+				setError('There is already user with that login. Please try again.');
+			}
+			if (code === 'auth/invalid-email') {
+				console.log(message);
+				setError('Your email is invalid. Please type a correct email address.');
+			}
+			setTimeout(() => {
+				setError('');
+			}, 6000);
+		}
 
 		resetPassword();
 		resetRepeatPassword();
@@ -71,7 +97,7 @@ export const Register = () => {
 
 	return (
 		<>
-		<h1>Please Sign up</h1>
+			<h1>Please Sign up</h1>
 			<form onSubmit={submitHandler}>
 				<div className={emailClasses}>
 					<label htmlFor='email'>E-Mail Address</label>
@@ -116,7 +142,7 @@ export const Register = () => {
 						<p className={classes['error-text']}>Please repeat a password.</p>
 					)}
 				</div>
-				{/* <p className={classes['error-text']}>Some error from firebase</p> */}
+				{error && <p className={classes['error-text']}>{error}</p>}
 				<div className={classes['form-actions']}>
 					<button disabled={!formIsValid}>Sign up</button>
 				</div>
