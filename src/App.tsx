@@ -4,10 +4,19 @@ import { Home } from './components/Home/Home';
 import { Login } from './components/Login/Login';
 import { Navbar } from './components/Navbar/Navbar';
 import { Register } from './components/Register/Register';
+import { useDispatch } from 'react-redux';
+import { authActions } from './store/auth';
 
 import './App.module.css';
+import { useEffect } from 'react';
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(authActions.username());
+	}, [dispatch]);
+
 	return (
 		<div>
 			<Navbar />
