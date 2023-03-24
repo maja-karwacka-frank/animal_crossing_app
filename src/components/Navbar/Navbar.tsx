@@ -6,6 +6,7 @@ import classes from './Navbar.module.css';
 export const Navbar = () => {
    return <div>
    <img src={logoUser} className={classes['logo-user']} alt=''></img>
+   <NavLink to='/'>Home</NavLink>
    <NavLink to='/login'>Log in</NavLink>
    <NavLink to='/register'>Sign up</NavLink>
    </div>

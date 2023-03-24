@@ -1,3 +1,7 @@
 .logo-user {
     width: 45px;
 }
+
+a.active {
+    color:rgb(255, 127, 127)
+}

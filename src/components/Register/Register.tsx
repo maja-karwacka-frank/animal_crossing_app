@@ -7,7 +7,7 @@ export const Register = () => {
 		value.trim() !== '' && value.length >= 6;
 	const isEmail = (value: string) => value.includes('@');
 	const isTheSame = (value: string) => value === passwordValue;
-	
+
 	const {
 		value: passwordValue,
 		isValid: passwordIsValid,
@@ -70,54 +70,57 @@ export const Register = () => {
 		: classes['form-control'];
 
 	return (
-		<form onSubmit={submitHandler}>
-			<div className={emailClasses}>
-				<label htmlFor='email'>E-Mail Address</label>
-				<input
-					type='email'
-					id='email'
-					value={emailValue}
-					onChange={emailChangeHandler}
-					onBlur={emailBlurHandler}
-				/>
-				{emailHasError && (
-					<p className={classes['error-text']}>
-						Please enter an email address.
-					</p>
-				)}
-			</div>
-			<div className={passwordClasses}>
-				<label htmlFor='password'>Password</label>
-				<input
-					type='password'
-					id='password'
-					value={passwordValue}
-					onChange={passwordChangeHandler}
-					onBlur={passwordBlurHandler}
-				/>
-				{passwordHasError && (
-					<p className={classes['error-text']}>
-						Please enter a password, min 6 characters.
-					</p>
-				)}
-			</div>
-			<div className={repeatPasswordClasses}>
-				<label htmlFor='password'>Repeat password</label>
-				<input
-					type='password'
-					id='password'
-					value={repeatPasswordValue}
-					onChange={repeatPasswordChangeHandler}
-					onBlur={repeatPasswordBlurHandler}
-				/>
-				{repeatPasswordHasError && (
-					<p className={classes['error-text']}>Please repeat a password.</p>
-				)}
-			</div>
-			{/* <p className={classes['error-text']}>Some error from firebase</p> */}
-			<div className={classes['form-actions']}>
-				<button disabled={!formIsValid}>Sign up</button>
-			</div>
-		</form>
+		<>
+		<h1>Please Sign up</h1>
+			<form onSubmit={submitHandler}>
+				<div className={emailClasses}>
+					<label htmlFor='email'>E-Mail Address</label>
+					<input
+						type='email'
+						id='email'
+						value={emailValue}
+						onChange={emailChangeHandler}
+						onBlur={emailBlurHandler}
+					/>
+					{emailHasError && (
+						<p className={classes['error-text']}>
+							Please enter an email address.
+						</p>
+					)}
+				</div>
+				<div className={passwordClasses}>
+					<label htmlFor='password'>Password</label>
+					<input
+						type='password'
+						id='password'
+						value={passwordValue}
+						onChange={passwordChangeHandler}
+						onBlur={passwordBlurHandler}
+					/>
+					{passwordHasError && (
+						<p className={classes['error-text']}>
+							Please enter a password, min 6 characters.
+						</p>
+					)}
+				</div>
+				<div className={repeatPasswordClasses}>
+					<label htmlFor='password'>Repeat password</label>
+					<input
+						type='password'
+						id='password'
+						value={repeatPasswordValue}
+						onChange={repeatPasswordChangeHandler}
+						onBlur={repeatPasswordBlurHandler}
+					/>
+					{repeatPasswordHasError && (
+						<p className={classes['error-text']}>Please repeat a password.</p>
+					)}
+				</div>
+				{/* <p className={classes['error-text']}>Some error from firebase</p> */}
+				<div className={classes['form-actions']}>
+					<button disabled={!formIsValid}>Sign up</button>
+				</div>
+			</form>
+		</>
 	);
 };
