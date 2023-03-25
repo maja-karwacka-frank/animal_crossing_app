@@ -6,6 +6,8 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Register } from './components/Register/Register';
 import { useDispatch } from 'react-redux';
 import { authActions } from './store/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from './firebase';
 
 import './App.module.css';
 import { useEffect } from 'react';
@@ -14,7 +16,14 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(authActions.username());
+		onAuthStateChanged(firebaseAuth, async (user) => {
+			if (user) {
+				const userEmail = user.email;
+				dispatch(authActions.login(userEmail));
+			} else {
+				console.log('isNotLogged');
+			}
+		});
 	}, [dispatch]);
 
 	return (

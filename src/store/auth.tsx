@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { onAuthStateChanged } from 'firebase/auth';
-import { firebaseAuth } from '../firebase';
 
 const initialAuthState = {
 	isLogged: false,
@@ -11,24 +9,13 @@ const authSlice = createSlice({
 	name: 'authentication',
 	initialState: initialAuthState,
 	reducers: {
-		login(state) {
+		login(state, action) {
 			state.isLogged = true;
+			state.userEmail = action.payload;
 		},
 		logout(state) {
 			state.isLogged = false;
-		},
-		username(state) {
-			onAuthStateChanged(firebaseAuth, async (user) => {
-				if (user?.email) {
-					state.userEmail = user.email;
-					state.isLogged = true;
-                    console.log('isLogged');
-				} else {
-					state.userEmail = '';
-					state.isLogged = false;
-                    console.log('isNotLogged');
-				}
-			});
+			// state.userEmail = '';
 		},
 	},
 });

@@ -3,10 +3,13 @@ import { firebaseAuth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useInput } from '../../hooks/use-input';
+import { useDispatch } from 'react-redux/es/exports';
 
 import classes from './Login.module.css';
+import { authActions } from '../../store/auth';
 
 export const Login = () => {
+	const dispatch = useDispatch();
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
 	const isNotEmpty = (value: string) =>
@@ -42,10 +45,11 @@ export const Login = () => {
 		if (!formIsValid) {
 			return;
 		}
-		
+
 		try {
 			await signInWithEmailAndPassword(firebaseAuth, emailValue, passwordValue);
 			navigate('/');
+			dispatch(authActions.login(emailValue));
 		} catch ({ message }) {
 			console.log(message);
 			setError(

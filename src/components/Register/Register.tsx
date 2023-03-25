@@ -3,10 +3,13 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../../firebase.js';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux/es/exports';
 
 import classes from './Register.module.css';
+import { authActions } from '../../store/auth';
 
 export const Register = () => {
+	const dispatch = useDispatch();
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
 
@@ -65,6 +68,7 @@ export const Register = () => {
 				emailValue,
 				passwordValue
 			);
+			dispatch(authActions.login(emailValue))
 			navigate('/')
 		} catch ({ code, message }) {
 			if (code === 'auth/email-already-in-use') {
