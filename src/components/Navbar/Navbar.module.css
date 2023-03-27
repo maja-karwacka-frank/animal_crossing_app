@@ -1,28 +1,83 @@
-.navigation {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0 1rem;
-    height: 80px;
+.desktop {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .logo-user {
-    align-self: flex-end;
-    width: 45px;
+	align-self: flex-end;
+	width: 45px;
 }
 
 .active {
-    color: #71a399;
-    font-weight: bold;
-}
-
-a {
-    margin: .8rem;
+	color: #71a399;
+	font-weight: bold;
 }
 
 .user-email {
-    display: flex;
-    align-items: center;
-    line-height: 1rem;
+	display: flex;
+	align-items: center;
+	line-height: 1rem;
 }
 
+.bar-icon {
+	width: 40px;
+}
+
+.bar-button {
+	position: relative;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	height: 50px;
+	z-index: 11;
+}
+
+.bar-button:hover {
+	background-color: transparent;
+	/* background-color: #8ecabe; */
+}
+
+.navbar-collapse {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 3.5rem 0 0 0;
+	width: 150px;
+	height: 150px;
+	background-color: #8ecabe;
+	text-align: center;
+	transform: translatex(100%);
+	transition: 0.3s;
+	z-index: 10;
+}
+
+.show-navbar-collapse {
+	transform: translateX(0);
+}
+
+.navbar-collapse li {
+	list-style: none;
+}
+
+/* desktop */
+
+@media (min-width: 768px) {
+	.bar-button,
+	.bar-icon {
+		display: none;
+	}
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+	.desktop {
+		display: none;
+	}
+	.navigation {
+		text-align: end;
+	}
+}
