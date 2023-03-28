@@ -100,9 +100,9 @@ export const Register = () => {
 		: classes['form-control'];
 
 	return (
-		<>
+		<div className={classes.content}>
 			<h1>Please Sign up</h1>
-			<form onSubmit={submitHandler}>
+			<form onSubmit={submitHandler} className={classes.form}>
 				<div className={emailClasses}>
 					<label htmlFor='email'>E-Mail Address</label>
 					<input
@@ -151,6 +151,6 @@ export const Register = () => {
 					<button disabled={!formIsValid}>Sign up</button>
 				</div>
 			</form>
-		</>
+		</div>
 	);
 };

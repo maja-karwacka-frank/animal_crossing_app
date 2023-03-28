@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { authActions } from '../../store/auth';
+import { signOut } from 'firebase/auth';
+import { firebaseAuth } from '../../firebase';
 import logoUser from '../../img/Raymond_Icon.png';
 import barIcon from '../../img/Hamburger-icon.png';
 
@@ -20,7 +22,12 @@ export const Navbar = () => {
 	const isLogged = useSelector((state: authState) => state.auth.isLogged);
 	const [toggleMenu, setToggleMenu] = useState(false);
 
-	const logoutHandler = () => {
+	const logoutHandler = async (): Promise<void> => {
+		try {
+			await signOut(firebaseAuth);
+		} catch (error) {
+			console.log(error);
+		}
 		dispatch(authActions.logout());
 	};
 
@@ -67,23 +74,23 @@ export const Navbar = () => {
 	return (
 		<div className={classes.navigation}>
 			<div className={classes.desktop}>
-			{homeContent}
-			{isLogged && (
-				<>
-					{userContent}
-					{myWishlistContent}
-					{logoutContent}
-				</>
-			)}
+				{homeContent}
+				{isLogged && (
+					<>
+						{userContent}
+						{myWishlistContent}
+						{logoutContent}
+					</>
+				)}
 
-			{!isLogged && (
-				<>
-					{loginContent}
-					{signupContent}
-				</>
-			)}
+				{!isLogged && (
+					<>
+						{loginContent}
+						{signupContent}
+					</>
+				)}
 			</div>
-			
+
 			<button
 				onClick={() => setToggleMenu(!toggleMenu)}
 				className={classes['bar-button']}>
@@ -96,19 +103,25 @@ export const Navbar = () => {
 						? `${classes['navbar-collapse']} ${classes['show-navbar-collapse']}`
 						: classes['navbar-collapse']
 				}>
-				<ul>
+				<ul className={classes.list}>
 					{isLogged && (
-						<>	
+						<>
 							{/* <li>{userContent}</li> */}
-							<li>{myWishlistContent}</li>
-							<li>{logoutContent}</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>
+								{myWishlistContent}
+							</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>
+								{logoutContent}
+							</li>
 						</>
 					)}
 					{!isLogged && (
 						<>
-							<li>{homeContent}</li>
-							<li>{loginContent}</li>
-							<li>{signupContent}</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>{homeContent}</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>{loginContent}</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>
+								{signupContent}
+							</li>
 						</>
 					)}
 				</ul>

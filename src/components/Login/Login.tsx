@@ -55,9 +55,9 @@ export const Login = () => {
 			setError(
 				'Raymond is not satisfied with your login or password. Please try again'
 			);
-			setTimeout(() => {
-				setError('');
-			}, 6000);
+			// setTimeout(() => {
+			// 	setError('');
+			// }, 6000);
 		}
 
 		resetPassword();
@@ -72,9 +72,9 @@ export const Login = () => {
 		: classes['form-control'];
 
 	return (
-		<>
+		<div className={classes.content}>
 			<h1>Please Log In</h1>
-			<form onSubmit={loginHandler}>
+			<form onSubmit={loginHandler} className={classes.form}>
 				<div className={emailClasses}>
 					<label htmlFor='email'>E-Mail Address</label>
 					<input
@@ -105,11 +105,11 @@ export const Login = () => {
 						</p>
 					)}
 				</div>
-				{error && <p className={classes['error-text']}>{error}</p>}
+				{error && <div className={classes['form-control']}><p className={classes['error-text']}>{error}</p></div>}
 				<div className={classes['form-actions']}>
 					<button disabled={!formIsValid}>Log in</button>
 				</div>
 			</form>
-		</>
+		</div>
 	);
 };

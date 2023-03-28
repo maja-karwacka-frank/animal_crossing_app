@@ -1,3 +1,15 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.form {
+  margin: 0 1rem;
+}
+
 .form-control {
     margin-bottom: 1rem;
   }
@@ -24,16 +36,16 @@
   
   .form-control input:focus {
     outline: none;
-    border-color: #240370;
-    background-color: #e0d4fd;
+    border-color: #52af9d;
+    background-color: #dbf5e6;
   }
   
   
   button {
     font: inherit;
-    background-color: #240370;
+    background-color: #50af9c;
     color: white;
-    border: 1px solid #240370;
+    border: 1px solid #50af9c;
     padding: 0.5rem 1.5rem;
     border-radius: 4px;
     cursor: pointer;
@@ -41,8 +53,8 @@
   
   button:hover,
   button:active {
-    background-color: #33059e;
-    border-color: #33059e;
+    background-color: #158b74;
+    border-color: #158b74;
   }
   
   button:disabled,
