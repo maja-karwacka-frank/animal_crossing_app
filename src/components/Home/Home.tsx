@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import classes from './Home.module.css';
 import ACLogo from '../../img/AC_Logo.png';
 
@@ -11,7 +12,7 @@ export const Home = () => {
 					<p>Critterpedia</p>
 				</div>
 				<div>
-					<p>Villagers</p>
+					<Link to='/villagers'>Villagers</Link>
 				</div>
 			</div>
 		</>

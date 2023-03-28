@@ -11,6 +11,7 @@ import { firebaseAuth } from './firebase';
 
 import './App.module.css';
 import { useEffect } from 'react';
+import { VillagersList } from './components/Villagers/VillagersList';
 
 function App() {
 	const dispatch = useDispatch();
@@ -20,8 +21,6 @@ function App() {
 			if (user) {
 				const userEmail = user.email;
 				dispatch(authActions.login(userEmail));
-			} else {
-				console.log('isNotLogged');
 			}
 		});
 	}, [dispatch]);
@@ -34,6 +33,7 @@ function App() {
 				<Route path='/register' element={<Register />} />
 				<Route path='/' element={<Home />} />
 				<Route path='*' element={<Home />} />
+				<Route path='/villagers' element={<VillagersList />}/>
 			</Routes>
 			<Footer />
 		</div>
