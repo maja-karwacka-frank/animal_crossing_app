@@ -6,7 +6,7 @@ import { Loader } from '../Loader/Loader';
 import { SearchFormVillagers } from './SearchFormVillagers';
 import { Villager } from './Villager';
 
-
+import classes from './VillagersList.module.css';
 interface villagersState {
 	villagers: {
 		villagers: [];
@@ -35,6 +35,9 @@ export const VillagersList = () => {
 	);
 
 	useEffect(() => {
+		if (villagers.length !== 0) {
+			return;
+		}
 		const transformVillager = (villsObj: VillObj[]) => {
 			const newVillagers = villsObj.map((singleVill: VillObj) => {
 				const {
@@ -69,16 +72,19 @@ export const VillagersList = () => {
 		};
 
 		fetchVillagers('https://api.nookipedia.com/villagers', transformVillager);
-	}, [fetchVillagers, dispatch]);
-	console.log(villagers);
+	}, [fetchVillagers, dispatch, villagers.length]);
 
 	return (
-		<div>
+		<div className={classes.container}>
 			<h1>Villagers List</h1>
 			<SearchFormVillagers />
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
-			<Villager />
+			<div className={classes['villagers-list-container']}>
+				{villagers.slice(0, 80).map((item: VillObj, index) => {
+					return <Villager key={index} {...item} />;
+				})}
+			</div>
 		</div>
 	);
 };

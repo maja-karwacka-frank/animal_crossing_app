@@ -1,0 +1,21 @@
+.villager-icon {
+    width: 70px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 250px;
+    border: 1px solid #50af9c;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 1px #50af9c;
+    text-align: center;
+}
+
+.container p {
+    margin: .2rem;
+}

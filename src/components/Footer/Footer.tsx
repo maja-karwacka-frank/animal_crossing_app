@@ -7,7 +7,7 @@ export const Footer = () => {
 	return (
 		<footer>
 			<div>
-				<span>Animal Crossing is a project created by Maja Karwacka-Frank:</span>
+				<p>Animal Crossing is a project created by Maja Karwacka-Frank:</p>
 				<a target='_blank' href='https://github.com/maja-karwacka-frank'>
 					<img
 						className={classes['footer-small-logos']}

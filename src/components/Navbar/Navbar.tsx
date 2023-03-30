@@ -93,7 +93,7 @@ export const Navbar = () => {
 
 			<button
 				onClick={() => setToggleMenu(!toggleMenu)}
-				className={classes['bar-button']}>
+				className={classes['bar-button']}>Nav
 				<img src={barIcon} alt='' className={classes['bar-icon']}></img>
 			</button>
 
@@ -106,7 +106,7 @@ export const Navbar = () => {
 				<ul className={classes.list}>
 					{isLogged && (
 						<>
-							{/* <li>{userContent}</li> */}
+							<li onClick={() => setToggleMenu(!toggleMenu)}>{homeContent}</li>
 							<li onClick={() => setToggleMenu(!toggleMenu)}>
 								{myWishlistContent}
 							</li>

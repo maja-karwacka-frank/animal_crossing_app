@@ -19,6 +19,7 @@ export const useHttp = () => {
 			}
 
 			const data = await response.json();
+			console.log('pobrane');
 			callback(data);
 		} catch (err: any) {
 			setError(err.message || 'Something went wrong!');
