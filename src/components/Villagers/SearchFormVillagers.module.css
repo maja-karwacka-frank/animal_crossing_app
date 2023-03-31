@@ -1,0 +1,15 @@
+.filter {
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.filter-control {
+    margin: 0 1rem;
+}
+
+.filter select {
+    margin: .3rem;
+    padding: .2rem;
+    border-radius: 6px;
+}

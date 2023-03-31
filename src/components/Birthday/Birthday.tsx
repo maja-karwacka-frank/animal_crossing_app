@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { VillObj } from '../Home/Home';
-import { villagersState } from '../Home/Home';
+import { VillObj } from '../../App';
+import { villagersState } from '../../App';
 import { Villager } from '../Villagers/Villager';
 import classes from './Birthday.module.css';
 

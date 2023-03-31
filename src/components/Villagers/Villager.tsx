@@ -1,4 +1,4 @@
-import { VillObj } from '../Home/Home';
+import { VillObj } from '../../App';
 import classes from './Villager.module.css';
 
 export const Villager = (props: VillObj) => {
