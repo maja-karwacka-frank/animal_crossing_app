@@ -14,6 +14,8 @@ import { useHttp } from './hooks/use-http';
 import './App.module.css';
 import { useEffect } from 'react';
 import { VillagersList } from './components/Villagers/VillagersList';
+import { Criterpedia } from './components/Critterpedia/Critterpedia';
+import { Fishes } from './components/Critterpedia/Fishes';
 
 export interface villagersState {
 	villagers: {
@@ -97,9 +99,20 @@ function App() {
 			<Routes>
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
-				<Route path='/' element={<Home isLoading={isLoading} error={error} />} />
-				<Route path='*' element={<Home isLoading={isLoading} error={error} />} />
-				<Route path='/villagers' element={<VillagersList isLoading={isLoading} error={error}/>} />
+				<Route
+					path='/'
+					element={<Home isLoading={isLoading} error={error} />}
+				/>
+				<Route
+					path='*'
+					element={<Home isLoading={isLoading} error={error} />}
+				/>
+				<Route
+					path='/villagers'
+					element={<VillagersList isLoading={isLoading} error={error} />}
+				/>
+				<Route path='/critterpedia' element={<Criterpedia />} />
+				<Route path='/fishes' element={<Fishes />} />
 			</Routes>
 			<Footer />
 		</div>

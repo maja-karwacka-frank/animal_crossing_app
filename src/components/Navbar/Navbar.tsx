@@ -71,10 +71,19 @@ export const Navbar = () => {
 		</p>
 	);
 
+	const critterpediaContent = (
+		<NavLink
+			to='/critterpedia'
+			className={({ isActive }) => (isActive ? classes.active : undefined)}>
+			Critterpedia
+		</NavLink>
+	);
+
 	return (
 		<div className={classes.navigation}>
 			<div className={classes.desktop}>
 				{homeContent}
+				{critterpediaContent}
 				{isLogged && (
 					<>
 						{userContent}
@@ -107,6 +116,7 @@ export const Navbar = () => {
 					{isLogged && (
 						<>
 							<li onClick={() => setToggleMenu(!toggleMenu)}>{homeContent}</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>{critterpediaContent}</li>
 							<li onClick={() => setToggleMenu(!toggleMenu)}>
 								{myWishlistContent}
 							</li>
@@ -118,6 +128,7 @@ export const Navbar = () => {
 					{!isLogged && (
 						<>
 							<li onClick={() => setToggleMenu(!toggleMenu)}>{homeContent}</li>
+							<li onClick={() => setToggleMenu(!toggleMenu)}>{critterpediaContent}</li>
 							<li onClick={() => setToggleMenu(!toggleMenu)}>{loginContent}</li>
 							<li onClick={() => setToggleMenu(!toggleMenu)}>
 								{signupContent}

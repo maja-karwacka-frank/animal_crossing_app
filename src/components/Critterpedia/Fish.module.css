@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+	padding: 1rem;
+	width: 180px;
+	border: 1px solid #50af9c;
+	border-radius: 10px;
+	box-shadow: 0 0 3px 1px #50af9c;
+	text-align: center;
+}
+
+.container p {
+	margin: 0.2rem;
+}
+
+.fish-icon {
+    width: 60px;
+}
