@@ -4,13 +4,17 @@ import { SearchFormVillagers } from './SearchFormVillagers';
 import { Villager } from './Villager';
 import { VillObj } from '../../App';
 import { villagersState } from '../../App';
+import { Loader } from '../Loader/Loader';
 
 import classes from './VillagersList.module.css';
 
-export const VillagersList = () => {
-	const villagers = useSelector(
-		(state: villagersState) => state.villagers.villagers
-	);
+type Props = {
+	isLoading: boolean;
+	error: null | string;
+}
+
+export const VillagersList = (props: Props) => {
+	const villagers = useSelector((state: villagersState) => state.villagers.villagers);
 	const [filteredPersonality, setFilteredPersonality] = useState('');
 
 	const filteredChangeHandler = (selectedValue: string) => {
@@ -42,6 +46,8 @@ export const VillagersList = () => {
 				selected={filteredPersonality}
 				onChangeFilter={filteredChangeHandler}
 			/>
+			{props.isLoading && <Loader />}
+			{props.error && <p>{props.error}</p>}
 			<div className={classes['villagers-list-container']}>{content}</div>
 		</div>
 	);

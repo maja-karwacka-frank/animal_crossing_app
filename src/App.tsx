@@ -37,7 +37,7 @@ export type VillObj = {
 
 function App() {
 	const dispatch = useDispatch();
-	const { sendRequest: fetchVillagers } = useHttp();
+	const { isLoading, error, sendRequest: fetchVillagers } = useHttp();
 	const villagers = useSelector(
 		(state: villagersState) => state.villagers.villagers
 	);
@@ -97,9 +97,9 @@ function App() {
 			<Routes>
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
-				<Route path='/' element={<Home />} />
-				<Route path='*' element={<Home />} />
-				<Route path='/villagers' element={<VillagersList />} />
+				<Route path='/' element={<Home isLoading={isLoading} error={error} />} />
+				<Route path='*' element={<Home isLoading={isLoading} error={error} />} />
+				<Route path='/villagers' element={<VillagersList isLoading={isLoading} error={error}/>} />
 			</Routes>
 			<Footer />
 		</div>

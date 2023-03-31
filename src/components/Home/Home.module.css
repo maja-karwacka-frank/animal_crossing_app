@@ -17,3 +17,9 @@
 	flex-wrap: wrap;
 	gap: 1rem;
 }
+
+.wallpaper {
+	display: block;
+	width: 300px;
+	margin-top: 2rem;
+}
