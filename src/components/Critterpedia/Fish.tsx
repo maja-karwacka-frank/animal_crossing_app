@@ -4,7 +4,7 @@ import classes from './Fish.module.css';
 export const Fish = (props: FishObj) => {
     return <div className={classes.container}>
         <img className={classes['fish-icon']} src={props.render_url}/>
-        <p>{props.name}</p>
+        <p className={classes.title}>{props.name}</p>
         <p>Location: {props.location}</p>
         <p>Size: {props.shadow_size}</p>
         <p>{props.catchphrases}</p>

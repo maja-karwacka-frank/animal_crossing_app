@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { useHttp } from '../../hooks/use-http';
 import { fishesActions } from '../../store/fishes';
 import { Loader } from '../Loader/Loader';
@@ -71,11 +70,11 @@ export const Fishes = () => {
 
 		fetchFishes('https://api.nookipedia.com/nh/fish', transformFish);
 	}, [fetchFishes, fishes, dispatch]);
-    console.log(fishes);
+   
 
 	return (
 		<div>
-			<p>Fishes</p>
+			<h1>Fishes</h1>
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
 			<div className={classes['fishes-list']}>

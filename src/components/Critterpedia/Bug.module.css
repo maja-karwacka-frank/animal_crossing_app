@@ -17,10 +17,11 @@
 	margin: 0.2rem;
 }
 
-.fish-icon {
+.bug-icon {
     width: 60px;
 }
 
 .title {
+    text-transform: capitalize;
     font-weight: bold;
 }

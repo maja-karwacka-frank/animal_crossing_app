@@ -1,3 +1,22 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.content div {
+    margin: 1rem;
+}
+
+.icon {
+    display: block;
+    margin: .5rem;
+}
+
+
+
 @media(max-width: 720px) {
     .icon {
         width: 500px;

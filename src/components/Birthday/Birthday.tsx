@@ -12,20 +12,21 @@ export const Birthday = () => {
 	const [filteredVill, setFilteredVill] = useState<VillObj[]>([]);
 
 	const today = new Date();
-	const day = today.toLocaleString('en-US', { day: '2-digit' });
+	const day = today.toLocaleString('en-US', { day: 'numeric' });
 	const month = today.toLocaleString('en-EN', { month: 'long' });
 
 	useEffect(() => {
 		if (villagers.length !== 0) {
 			setFilteredVill(
 				villagers.filter(
-					(vill: VillObj) =>
+					(vill: VillObj) => 
 						vill.birthday_month === month && vill.birthday_day === day
+						
 				)
 			);
 		}
 	}, [villagers, day, month]);
-
+	
 	return (
 		<div className={classes.container}>
 			<h2>Today Birthday:</h2>

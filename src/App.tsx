@@ -16,6 +16,8 @@ import { useEffect } from 'react';
 import { VillagersList } from './components/Villagers/VillagersList';
 import { Criterpedia } from './components/Critterpedia/Critterpedia';
 import { Fishes } from './components/Critterpedia/Fishes';
+import { Bugs } from './components/Critterpedia/Bugs';
+import { SeaCreatures } from './components/Critterpedia/SeaCreatures';
 
 export interface villagersState {
 	villagers: {
@@ -24,12 +26,12 @@ export interface villagersState {
 }
 
 export type VillObj = {
+	name: string;
 	id: string;
 	birthday_day: string;
 	birthday_month: string;
 	gender: string;
 	image_url: string;
-	name: string;
 	personality: string;
 	phrase: string;
 	quote: string;
@@ -60,12 +62,12 @@ function App() {
 		const transformVillager = (villsObj: VillObj[]) => {
 			const newVillagers = villsObj.map((singleVill: VillObj) => {
 				const {
+					name,
 					id,
 					birthday_day,
 					birthday_month,
 					gender,
 					image_url,
-					name,
 					personality,
 					phrase,
 					quote,
@@ -74,12 +76,12 @@ function App() {
 				} = singleVill;
 
 				return {
+					name,
 					id,
 					birthday_day,
 					birthday_month,
 					gender,
 					image_url,
-					name,
 					personality,
 					phrase,
 					quote,
@@ -113,6 +115,8 @@ function App() {
 				/>
 				<Route path='/critterpedia' element={<Criterpedia />} />
 				<Route path='/fishes' element={<Fishes />} />
+				<Route path='/bugs' element={<Bugs />} />
+				<Route path='/sea-creatures' element={<SeaCreatures />} />
 			</Routes>
 			<Footer />
 		</div>
