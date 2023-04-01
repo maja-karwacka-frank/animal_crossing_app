@@ -8,7 +8,6 @@ import classes from './Critterpedia.module.css';
 export const Criterpedia = () => {
 	return (
 		<div>
-			<p>Currently available</p>
 			<div className={classes.content}>
 				<div>
 					<Link to='/fishes'>

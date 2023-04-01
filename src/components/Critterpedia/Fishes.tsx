@@ -5,6 +5,7 @@ import { fishesActions } from '../../store/fishes';
 import { Loader } from '../Loader/Loader';
 import { Fish } from './Fish';
 import classes from './Fishes.module.css';
+import { CurrentlyAvailably } from './CurrentlyAvailable';
 
 export interface fishesState {
 	fishes: {
@@ -27,9 +28,11 @@ export type FishObj = {
 	sell_nook: number;
 	north: {
 		availability_array: Available[];
-		times_by_month: {};
+		times_by_month: {
+			[month: number]: string;
+		};
 		months: string;
-		months_array: [];
+		months_array: number[];
 	};
 };
 
@@ -75,6 +78,7 @@ export const Fishes = () => {
 	return (
 		<div>
 			<h1>Fishes</h1>
+			<CurrentlyAvailably onCurrentCritters={fishes}/>
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
 			<div className={classes['fishes-list']}>
