@@ -10,8 +10,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { firebaseAuth } from './firebase';
 import { villagersActions } from './store/villagers';
 import { useHttp } from './hooks/use-http';
-
-import './App.module.css';
 import { useEffect } from 'react';
 import { VillagersList } from './components/Villagers/VillagersList';
 import { Criterpedia } from './components/Critterpedia/Critterpedia';
@@ -19,6 +17,7 @@ import { Fishes } from './components/Critterpedia/Fishes';
 import { Bugs } from './components/Critterpedia/Bugs';
 import { SeaCreatures } from './components/Critterpedia/SeaCreatures';
 
+import './App.module.css';
 export interface villagersState {
 	villagers: {
 		villagers: [];

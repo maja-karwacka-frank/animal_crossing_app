@@ -12,10 +12,16 @@
     list-style: none;
     border: 1px solid black;
     border-radius: 5px;
+    height: 41px;
+    cursor: pointer;
 }
 
 .list li img {
     width: 30px;
+}
+
+li.active-item {
+    height: auto;
 }
 
 
