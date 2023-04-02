@@ -7,6 +7,7 @@ import { Available } from './Fishes';
 import { Bug } from './Bug';
 
 import classes from './Bugs.module.css';
+import { CurrentlyAvailably } from './CurrentlyAvailable';
 export interface bugsState {
 	bugs: {
 		bugs: [];
@@ -18,6 +19,7 @@ export type BugsObj = {
 	id: string;
 	catchphrases: string[];
 	render_url: string;
+	image_url: string;
 	location: string;
 	sell_nook: number;
 	north: {
@@ -39,14 +41,22 @@ export const Bugs = () => {
 		}
 		const transformBugs = (bugsObj: BugsObj[]) => {
 			const newBugs = bugsObj.map((singleBug: BugsObj) => {
-				const { render_url, name, location, sell_nook, north, catchphrases } =
-					singleBug;
+				const {
+					render_url,
+					image_url,
+					name,
+					location,
+					sell_nook,
+					north,
+					catchphrases,
+				} = singleBug;
 
 				return {
 					name,
 					id: name,
 					catchphrases,
 					render_url,
+					image_url,
 					location,
 					sell_nook,
 					north,
@@ -61,6 +71,7 @@ export const Bugs = () => {
 	return (
 		<div>
 			<h1>Bugs</h1>
+			<CurrentlyAvailably onCurrentCritters={bugs}/>
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
 			<div className={classes['bugs-list']}>

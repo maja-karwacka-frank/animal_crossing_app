@@ -7,6 +7,7 @@ import { Sea } from './Sea';
 import { Available } from './Fishes';
 
 import classes from './SeaCreatures.module.css';
+import { CurrentlyAvailably } from './CurrentlyAvailable';
 
 export interface seaCreaturesState {
 	seaCreatures: {
@@ -19,6 +20,7 @@ export type SeaCreaturesObj = {
 	id: string;
 	catchphrases: string[];
 	render_url: string;
+	image_url: string;
 	shadow_size: string;
 	shadow_movement: string;
 	sell_nook: number;
@@ -46,6 +48,7 @@ export const SeaCreatures = () => {
 				const {
 					name,
 					render_url,
+					image_url,
 					shadow_size,
 					shadow_movement,
 					sell_nook,
@@ -58,6 +61,7 @@ export const SeaCreatures = () => {
 					id: name,
 					catchphrases,
 					render_url,
+					image_url,
 					shadow_movement,
 					shadow_size,
 					sell_nook,
@@ -76,6 +80,7 @@ export const SeaCreatures = () => {
 	return (
 		<div>
 			<h1>Sea Creatures</h1>
+			<CurrentlyAvailably onCurrentCritters={seaCreatures}/>
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
 			<div className={classes['sea-list']}>

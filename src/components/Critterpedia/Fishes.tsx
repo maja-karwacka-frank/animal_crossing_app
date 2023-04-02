@@ -22,6 +22,7 @@ export type FishObj = {
 	id: string;
 	catchphrases: string[];
 	render_url: string;
+	image_url: string;
 	name: string;
 	location: string;
 	shadow_size: string;
@@ -49,6 +50,7 @@ export const Fishes = () => {
 			const newFishes = fishObj.map((singleFish: FishObj) => {
 				const {
 					render_url,
+					image_url,
 					name,
 					location,
 					shadow_size,
@@ -62,6 +64,7 @@ export const Fishes = () => {
 					catchphrases,
 					name,
 					render_url,
+					image_url,
 					location,
 					shadow_size,
 					sell_nook,

@@ -1,0 +1,22 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+    padding: 0;
+}
+
+.list li {
+    margin: .2rem;
+    padding: .2rem;
+    font-size: .8rem;
+    list-style: none;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.list li img {
+    width: 30px;
+}
+
+
+
