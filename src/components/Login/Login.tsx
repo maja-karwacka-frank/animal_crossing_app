@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useInput } from '../../hooks/use-input';
 import { useDispatch } from 'react-redux/es/exports';
+import { authActions } from '../../store/auth';
+import icon from '../../img/Wilbur.png';
 
 import classes from './Login.module.css';
-import { authActions } from '../../store/auth';
 
 export const Login = () => {
 	const dispatch = useDispatch();
@@ -50,14 +51,14 @@ export const Login = () => {
 			await signInWithEmailAndPassword(firebaseAuth, emailValue, passwordValue);
 			navigate('/');
 			dispatch(authActions.login(emailValue));
-		} catch ({ message }) {
-			console.log(message);
+		} catch (error: any) {
+			console.log(error.message);
 			setError(
 				'Raymond is not satisfied with your login or password. Please try again'
 			);
-			// setTimeout(() => {
-			// 	setError('');
-			// }, 6000);
+			setTimeout(() => {
+				setError('');
+			}, 6000);
 		}
 
 		resetPassword();
@@ -73,6 +74,7 @@ export const Login = () => {
 
 	return (
 		<div className={classes.content}>
+			<img className={classes.icon} src={icon} alt='dodo icon' />
 			<h1>Please Log In</h1>
 			<form onSubmit={loginHandler} className={classes.form}>
 				<div className={emailClasses}>
@@ -105,7 +107,11 @@ export const Login = () => {
 						</p>
 					)}
 				</div>
-				{error && <div className={classes['form-control']}><p className={classes['error-text']}>{error}</p></div>}
+				{error && (
+					<div className={classes['form-control']}>
+						<p className={classes['error-text']}>{error}</p>
+					</div>
+				)}
 				<div className={classes['form-actions']}>
 					<button disabled={!formIsValid}>Log in</button>
 				</div>

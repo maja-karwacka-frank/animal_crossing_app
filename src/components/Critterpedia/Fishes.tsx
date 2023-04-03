@@ -79,11 +79,12 @@ export const Fishes = () => {
    
 
 	return (
-		<div>
+		<div className={classes.content}>
 			<h1>Fishes</h1>
 			<CurrentlyAvailably onCurrentCritters={fishes}/>
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
+			<h2>All Fishes:</h2>
 			<div className={classes['fishes-list']}>
 				{fishes.map((fish: FishObj, index) => (
 					<Fish key={index} {...fish} />

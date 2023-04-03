@@ -4,9 +4,10 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../../firebase.js';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux/es/exports';
+import { authActions } from '../../store/auth';
+import icon from '../../img/isabell.png';
 
 import classes from './Register.module.css';
-import { authActions } from '../../store/auth';
 
 export const Register = () => {
 	const dispatch = useDispatch();
@@ -70,13 +71,13 @@ export const Register = () => {
 			);
 			dispatch(authActions.login(emailValue))
 			navigate('/')
-		} catch ({ code, message }) {
-			if (code === 'auth/email-already-in-use') {
-				console.log(message);
+		} catch (error: any) {
+			if (error.code === 'auth/email-already-in-use') {
+				console.log(error.message);
 				setError('There is already user with that login. Please try again.');
 			}
-			if (code === 'auth/invalid-email') {
-				console.log(message);
+			if (error.code === 'auth/invalid-email') {
+				console.log(error.message);
 				setError('Your email is invalid. Please type a correct email address.');
 			}
 			setTimeout(() => {
@@ -101,6 +102,7 @@ export const Register = () => {
 
 	return (
 		<div className={classes.content}>
+			<img className={classes.icon} src={icon} alt='isabell icon'/>
 			<h1>Please Sign up</h1>
 			<form onSubmit={submitHandler} className={classes.form}>
 				<div className={emailClasses}>

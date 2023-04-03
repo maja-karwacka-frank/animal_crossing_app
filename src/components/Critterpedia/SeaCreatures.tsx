@@ -78,10 +78,11 @@ export const SeaCreatures = () => {
 	}, [fetchSeaCreatures, seaCreatures, dispatch]);
 
 	return (
-		<div>
+		<div className={classes.content}>
 			<h1>Sea Creatures</h1>
 			<CurrentlyAvailably onCurrentCritters={seaCreatures}/>
 			{isLoading && <Loader />}
+			<h2>All Sea Creatures:</h2>
 			{error && <p>{error}</p>}
 			<div className={classes['sea-list']}>
 				{seaCreatures.map((sea: SeaCreaturesObj, index) => (

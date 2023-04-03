@@ -58,10 +58,8 @@ export const CurrentlyAvailably = (props: any) => {
 		...filteredByTime3,
 	];
 
-	console.log(filteredAllCritters);
-
 	return (
-		<div>
+		<div className={classes.content}>
 			<h2>Curently Available:</h2>
 			<ul className={classes.list}>
 				{filteredAllCritters.map((obj: any) => (

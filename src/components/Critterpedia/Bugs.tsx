@@ -69,11 +69,12 @@ export const Bugs = () => {
 	}, [fetchBugs, bugs, dispatch]);
 
 	return (
-		<div>
+		<div className={classes.content}>
 			<h1>Bugs</h1>
 			<CurrentlyAvailably onCurrentCritters={bugs}/>
 			{isLoading && <Loader />}
 			{error && <p>{error}</p>}
+			<h2>All Bugs:</h2>
 			<div className={classes['bugs-list']}>
 				{bugs.map((bug: BugsObj, index) => (
 					<Bug key={index} {...bug} />
