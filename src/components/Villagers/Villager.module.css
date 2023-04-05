@@ -18,9 +18,26 @@
 }
 
 .container p {
+	position: relative;
 	margin: 0.2rem;
 }
 
 .name {
 	font-weight: bold;
+}
+
+.heart {
+	display: block;
+	font-size: 2rem;
+	color: red;
+}
+
+.button {
+	text-align: end;
+	background-color: transparent;
+	border: none;
+}
+
+.button:hover {
+	background-color: transparent;
 }
